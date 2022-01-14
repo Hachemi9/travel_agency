@@ -11,24 +11,14 @@ public class TravelSiteController {
 
 
     @PostMapping(value = "api/inscription")
-    public Object addUser(@RequestBody Registration user){
-        for (Registration u:users){
-          if (u.userName().equals(user.userName())){
-              return users;
-          }
-        }
+    public void addUser(@RequestBody Registration user){
         users.add(user);
-        return users;
     }
 
     @GetMapping(value="/api/travels")
     public Object get(@RequestParam String userName){
         List<Country> countries = new ArrayList<>();
-        for (Registration u:users){
-            if (u.userName().equals(userName)){
-                countries.add(new Country("France",24));
-                countries.add(new Country("Algeria",40));
-            }}
+        countries.add(new Country("Algeria",40));
         return countries;
     }
 }
